@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>PES University</title>  <!-- For final deployment, change url_for to CDN urls -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href= "{{ url_for('static',filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{{ url_for('static',filename = 'css/mdb.min.css')}}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{{ url_for('static',filename = 'css/style.css')}}" rel="stylesheet">
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+<!--Main Navigation-->
+<header>
+<!--Navbar-->
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="www.pes.edu">PES University</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item {% block home %}{% endblock %}">
+              <a class="nav-link " href="/">Home</a>
+          </li>
+          {% block nav_student %}
+          <li class="nav-item {% block contact %}{% endblock %}">
+              <a class="nav-link" href="/elective">Elective Registration</a>
+          </li>
+          {% endblock %}
+          {% block nav_admin %}
+          <li class="nav-item {% block manage_event %}{% endblock %}">
+            <a class="nav-link" href="/managstudents">Manage Student</a>
+          </li>
+        <li class="nav-item {% block create %}{% endblock %}">
+            <a class="nav-link" href="/manageelectives">Manage Electives</a>
+        </li>
+        {% endblock %}
+      </ul>
+      {% block nav %}
+      <div class="nav-item dropdown">
+            <button class="btn btn-primary dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" type="button" onclick = >Hi, {{ name }}!</button>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href = "/logout">Log Out</a>
+            </div>
+          </div>
+      </div>
+      {% endblock %}
+
+      <!-- Links -->
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main>
+{% block main %}{% endblock %}
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="page-footer text-center font-small mt-4 wow indigo fadeIn">
+
+  <!--/.Call to action-->
+
+  <hr class="my-4">
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2018 Copyright:
+    <a href="" target="_blank"> Harshith Acharya, Hiranmaya Gundu, Partha Marella </a>
+  </div>
+  <!--/.Copyright-->
+
+</footer>
+<!--Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/jquery-3.3.1.min.js')}}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/popper.min.js')}}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/bootstrap.min.js')}}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/mdb.min.js')}}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename = 'js/angular.min.js')}}"></script>
+
+ {%  block script %}{% endblock %}
+</body>
+</html>
