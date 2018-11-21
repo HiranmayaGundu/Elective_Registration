@@ -14,12 +14,14 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'totally a secret lolz'
+#b = pymysql.connect("localhost", "root", "password", "")
 PROJECT_HOME = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = PROJECT_HOME + "/documents"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = set(['csv'])
 
 db = pymysql.connect("localhost", "root", "", "WT2")
+# db = pymysql.connect("localhost", "root", "password", "WT2019", charset="latin1")
 cursor = db.cursor()
 
 def allowed_file(filename):
@@ -197,6 +199,16 @@ def create_electives_db(filename):
         return True
     return False
 
+@app.route('/student')
+def student():
+    '''This function renders the sign in page.'''
+    return render_template('student.html')
+
+
+@app.route('/set_elective', methods=['POST'])
+def setElective():
+    '''This function renders the sign in page.'''
+    return "Success!"
 
 if __name__ == '__main__':
 # run!
